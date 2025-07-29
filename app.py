@@ -3,6 +3,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 from datetime import datetime
+import pytz
 import matplotlib.pyplot as plt
 import seaborn as sns
 
@@ -25,7 +26,8 @@ if menu == "Prediksi Diskon":
     if "predict_clicked" not in st.session_state:
         st.session_state.predict_clicked = False
 
-    now = datetime.now()
+    wib = pytz.timezone("Asia/Jakarta")
+    now = datetime.now(wib)
     day = now.day
     month = now.month
     year = now.year
@@ -36,7 +38,7 @@ if menu == "Prediksi Diskon":
         quantity = st.number_input("Quantity", min_value=1, value=5)
         price = st.number_input("Price", min_value=0.0, value=50.0)
 
-    st.markdown(f"**Tanggal saat ini**: {day}-{month}-{year}, pukul {hour}:00")
+    st.markdown(f"**Tanggal saat ini**: {day}-{month}-{year}, pukul {hour}:{minute:02d} WIB")
 
 
     col1, col2 = st.columns(2)
