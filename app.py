@@ -32,6 +32,7 @@ if menu == "Prediksi Diskon":
     month = now.month
     year = now.year
     hour = now.hour
+    minute = now.minute
 
     col1, col2 = st.columns(2)
     with col1:
